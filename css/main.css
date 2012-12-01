@@ -1,0 +1,128 @@
+body {
+  background-image: url(../images/backGround.png);
+}
+
+h1 {
+ font-family: sans-serif;
+ text-shadow: 1px 1px 3px #696969;
+	margin: 10px;
+}
+.preset{
+		margin: 10px;
+}
+.canvasLCD{
+		float: left;
+		margin: 3px 10px 3px 16px;;
+		border: 1px solid #696969;
+}
+
+.topPanel {
+ width  : 653px;
+ height : 20px;
+	background-color: #000000;
+}
+
+.line{
+	margin : 0px 0px 0px 0px;
+ width  : 653px;
+ height : 0px;
+	background-color: #000000;
+	border: 1px solid #393939;
+}
+
+.panel{
+	margin : 5px 10px 6px 0px;
+ width  : 653px;
+ height : 80px;
+	background-color: #000000;
+}
+
+.waveGraph{
+		margin: 20px;
+		margin-top: 10px;
+}
+.graph{
+		float: left;
+		margin: 3px 3px 3px 10px;
+		border: 1px solid #494949;
+		background-color: #000000;
+}
+
+.container {
+		margin: 10px 0px 0px 20px;
+		width: 655px;
+		background-color: #000000;
+		border-radius: 3px;
+		border: 1px solid #808080;
+  -webkit-box-shadow: 10px 15px 40px #000;
+}
+
+.center {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+
+
+.buttonArea {
+              float: left;
+              margin : 0px 10px 0px 10px;
+              width  : 636px;
+              height : 60px;
+              background-color: #808080;
+              }
+
+.upDownButton {
+    										  -webkit-box-shadow: 3px 3px 30px #000;
+                float: left;
+                margin-top: 1px;
+                margin-left: 13px;
+                background-color: #20B2AA;
+                width: 55px;
+                height: 35px;
+                border-radius: 2px;
+																border: 1px solid;
+   													border-color: #008080;
+                }
+.programChangeLabel{
+                     font-family: sans-serif;
+         										  text-shadow: 1px 1px 2px #FFFFFF;
+                     color: #FFFFFF;
+                     margin: 2px 10px 0px 16px;
+                     width: 120px;
+                     }
+.programLeft{
+								    margin: 2px 0px 0px 0px;
+            width: 0;
+            height: 0;
+            float: left;
+            border: 16px solid transparent;
+            border-right-color: #555
+            }
+.programRight{
+/*
+               margin: -8px 0px 0px 12px;
+               width: 0;
+               height: 0;
+               float: left;
+               border: 16px solid transparent;
+               border-bottom-color: #555
+*/
+
+               margin: 2px 0px 0px 20px;
+               width: 0;
+               height: 0;
+               float: left;
+               border: 16px solid transparent;
+               border-left-color: #555
+               }
+
+.canvasKenban {
+                margin : 0px 10px 0px 10px;
+                width            : 630px;
+                height           : 115px;
+                background-color : #D9D9D9;
+                border-style     : solid;
+                }
+

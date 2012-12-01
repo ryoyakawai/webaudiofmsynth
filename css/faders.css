@@ -1,0 +1,42 @@
+div.horizontalKnob{
+   								  -webkit-box-shadow: 3px 3px 30px #000;
+             cursor: pointer;
+             position: absolute;
+             margin-top: -16px;
+             margin-left: 150px;
+             width: 40px;
+             height: 30px;
+             border-style: solid;
+             border-radius: 2px;
+             border-width: 1px;
+             border-color: #000000;
+             background: -webkit-gradient(linear, left top, right top,
+             from(#808080),
+             color-stop(0.5, #f5f5f5),
+             to(#808080));
+             /*background-color: #CFCFCF;*/
+             }
+div.horizontalDitch{
+                position: relative;
+                margin: -19px 0px 0px 390px;
+                width: 216px;
+                height: 2px;
+                background-color: #000000;
+                }
+div.faderVolArea {
+													margin: 0px 0px 0px 370px;
+													width: 256px;
+													height: 36px;
+													border-color: #000000;
+													border: 1px solid;
+             border-radius: 2px;
+													background-color: #494949;
+}												
+
+div.volumeLabel {
+         										  text-shadow: 1px 1px 2px #FFFFFF;
+                     font-family: sans-serif;
+                     color: #FFFFFF;
+                     margin: -18px 10px 0px 370px;
+                     width: 120px;
+}

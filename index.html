@@ -1,0 +1,48 @@
+<html>
+<head>
+		<title>Web Audio FM Synth</title>
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
+		<link rel="stylesheet" href="css/faders.css" type="text/css" />
+</head>
+<body>
+
+		<h1><u>Web Audio FM Synth</u></h1>
+
+		<div class="container">
+				<div class="topPanel"></div>
+				<div class="line"></div>
+				<div class="panel">
+						<div class="canvasLCD"><canvas id="canvasLCD"></canvas></div>
+						<div class="graph"><canvas id="opGraph0" width="100" height="72"></canvas></div>
+						<div class="graph"><canvas id="opFreq0" width="100" height="72"></canvas></div>
+				</div>
+
+				<div class="buttonArea">
+						<div class="programChangeLabel">Preset Down/Up</div>
+						<div class="upDownButton programDown"><div class="programLeft"></div></div>
+						<div class="upDownButton programUp"><div class="programRight"></div></div>
+						<div class="volumeLabel">Volume</div>
+						<div class="faderVolArea"></div>
+						<div class="horizontalDitch">
+								<div class="horizontalKnob"></div>
+						</div>
+				</div>
+
+				<div class="canvasKenban center">
+						<canvas id="canvasKenban" width="650" height="122"></canvas>
+				</div>
+
+
+  </div>
+
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/canvasKenban.js"></script>
+		<script type="text/javascript" src="js/canvasLCD.js"></script>
+		<script type="text/javascript" src="js/faders.js"></script>
+		<script type="text/javascript" src="js/presetParam.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/fmsynth.js"></script>
+		<script type="text/javascript" src="js/webMidiLink.js"></script>
+
+</body>
+</html>
