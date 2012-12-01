@@ -32,7 +32,7 @@ var FmSynth = function(ctx) {
   var flag   = 'A';
   var j=0;
 
-  var attr   = new Array(0.00, 0.00, 0.20, 0.80); // (0.20, 0.20, 0.20, 0.80) // 使ってない
+  var attr   = new Array(0.00, 0.00, 0.20, 0.80); // (0.20, 0.20, 0.20, 0.80)
   
   // create frequency
   var r = Math.pow( 2.0, 1.0 / 12.0 );
@@ -105,7 +105,6 @@ var FmSynth = function(ctx) {
         this.osc[i] = actx.createOscillator();
         this.analyser[i] = actx.createAnalyser();
         this.osc[i].type = this.oscType[i];
-        //this.osc[i].detune.value = this.tune[i] * 480;
         this.osc[i].connect(this.gain[i]);
         this.gain[i].gain.value = 0;
         this.gain[i].connect(this.analyser[i]);
@@ -116,11 +115,8 @@ var FmSynth = function(ctx) {
           this.opFreq[i] = document.getElementById('opFreq'+i);
           this.opFreqCtx[i] = this.opFreq[i].getContext('2d');
         }
-        //drawCanvas(opCtx[i]);
       }
       
-//      this.gain[2].connect( this.osc[1].frequency );
-//      this.gain[2].connect( this.osc[3].frequency );
       this.gain[3].connect( this.osc[2].frequency );
       this.gain[2].connect( this.osc[1].frequency );
       this.gain[1].connect( this.osc[0].frequency );
@@ -150,9 +146,6 @@ var FmSynth = function(ctx) {
         drawCanvas(that.opFreqCtx[0]);
         drawFreqGraph(that.opFreqCtx[0], that.analyser[0]);
 
-//        that.analyser[1].getByteTimeDomainData(that.timeDomainData[1]);
-//        drawGraph(that.opCtx[1] , that.timeDomainData[1], vRate[1]);
-
         for(var i=0; i<that.numOsc; i++) {
           if(that.noteOnFlag== true) {
             that.curlev[i] = 1.5 + (that.curlev[i]-1.5) * that.aratio[i];
@@ -160,7 +153,6 @@ var FmSynth = function(ctx) {
               that.flag = 'A';
               that.noteOnFlag=false;
             }
-            // D S の処理を入れるならココ
           }
           if(i==0) {
             that.gain[i].gain.value=that.curlev[i]*that.lev[i];
@@ -168,18 +160,6 @@ var FmSynth = function(ctx) {
             that.gain[i].gain.value=that.curlev[i]*that.lev[i]*that.freq*10; //
           }          
         }
-/*
-        document.getElementById("att").innerHTML = "att: " + that.att[0] + " : " + that.att[1] + " : " + that.att[2] + " : " + that.att[3];
-        document.getElementById("attr").innerHTML = "attr: " + that.attr[0] + " : " + that.attr[1] + " : " + that.attr[2] + " : " + that.attr[3];
-        document.getElementById("aratio").innerHTML = "aratio: " + that.aratio[0] + " : " + that.aratio[1] + " : " + that.aratio[2] + " : " + that.aratio[3];
-        document.getElementById("rratio").innerHTML = "rratio: " + that.rratio[0] + " : " + that.rratio[1] + " : " + that.rratio[2] + " : " + that.rratio[3];
-        document.getElementById("lev").innerHTML = "lev: " + that.lev[0] + " : " + that.lev[1] + " : " + that.lev[2] + " : " + that.lev[3];
-        document.getElementById("curlev").innerHTML = "curlev: " + that.curlev[0] + " : " + that.curlev[1] + " : " + that.curlev[2] + " : " + that.curlev[3];
-        document.getElementById("gain").innerHTML = "gain: " + that.gain[0].gain.value + " : " + that.gain[1].gain.value + " : " + that.gain[2].gain.value + " : " + that.gain[3].gain.value;
-        document.getElementById("itr").innerHTML = "itr: " + j;
-        document.getElementById("noteOn").innerHTML = "noteOnFlag: " + that.noteOnFlag;
-        document.getElementById("flag").innerHTML = "flag: " + that.flag;
-*/
         j++;
       }, this.attIntervalSec);
     },
@@ -210,26 +190,12 @@ var FmSynth = function(ctx) {
             that.gain[i].gain.value=that.curlev[i]*that.lev[i]*that.freq*10;
           }
         }
-/*
-        document.getElementById("att").innerHTML = "att: " + that.att[0] + " : " + that.att[1] + " : " + that.att[2] + " : " + that.att[3];
-        document.getElementById("attr").innerHTML = "attr: " + that.attr[0] + " : " + that.attr[1] + " : " + that.attr[2] + " : " + that.attr[3];
-        document.getElementById("aratio").innerHTML = "aratio: " + that.aratio[0] + " : " + that.aratio[1] + " : " + that.aratio[2] + " : " + that.aratio[3];
-        document.getElementById("rratio").innerHTML = "rratio: " + that.rratio[0] + " : " + that.rratio[1] + " : " + that.rratio[2] + " : " + that.rratio[3];
-        document.getElementById("lev").innerHTML = "lev: " + that.lev[0] + " : " + that.lev[1] + " : " + that.lev[2] + " : " + that.lev[3];
-        document.getElementById("curlev").innerHTML = "curlev: " + that.curlev[0] + " : " + that.curlev[1] + " : " + that.curlev[2] + " : " + that.curlev[3];
-        document.getElementById("gain").innerHTML = "gain: " + that.gain[0].gain.value + " : " + that.gain[1].gain.value + " : " + that.gain[2].gain.value + " : " + that.gain[3].gain.value;
-        document.getElementById("itr").innerHTML = "itr: " + j;
-        document.getElementById("noteOn").innerHTML = "noteOnFlag: " + that.noteOnFlag;
-        document.getElementById("flag").innerHTML = "flag: " + that.flag;
-        document.getElementById("jj").innerHTML = "jj: " + jj;
-*/      
         jj+=1;
         if( that.gain[0].gain.value < Math.pow(10, -8)) {
           clearInterval(relInterval);
           for(var i=0; i<4; i++) {
             if(typeof that.osc[i] != 'undefined') {
               that.osc[i].noteOff(0);
-              //that.deleteOsc();
             }
           }
         }
@@ -279,8 +245,6 @@ function drawGraph(canvasCtx, data, vRate){
   canvasCtx.moveTo(0, -999);
   for (var i=0; i<data.length; ++i){
     value = vRate * (data[i] - 128) + canvasCtx.canvas.height/2;
-    //value = vRate[i] + data[i] - 128 + canvasCtx.canvas.height/2;
-    //value = data[i] - 128 + canvasCtx.canvas.height/2;
     canvasCtx.lineTo(i,value);
   }
   canvasCtx.moveTo(0,999);
@@ -295,7 +259,6 @@ function drawFreqGraph(canvasCtx, analyser) {
   var data = new Uint8Array(length);
   var numBars = 200;
   analyser.getByteFrequencyData(data);
-  //analyser.getFloatFrequencyData(data);
   var binSize = Math.floor(data.length/numBars);
   switch(mode) {
    case 'A':
@@ -326,7 +289,6 @@ function drawFreqGraph(canvasCtx, analyser) {
       var scaledAverage = (average/256) * canvasCtx.canvas.height;
     
       canvasCtx.lineTo(ii * barWidth + barWidth/2, canvasCtx.canvas.height - scaledAverage);
-      //canvasCtx.fillRect(ii * barWidth, canvasCtx.canvas.height, barWidth - 0.5, - scaledAverage);
     }
     canvasCtx.moveTo(0,canvasCtx.canvas.height);
     canvasCtx.closePath();
