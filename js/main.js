@@ -4,7 +4,7 @@ var mainGain = ctx.createGainNode();
 mainGain.connect( ctx.destination );
 mainGain.gain.value=0.8;
 var presetSelected = presetParams[0];
-var lcd = new CanvasLCD();
+var lcd = new CanvasLCD('01');
 var presetNo = 0;
 
 function noteOnFunc(keyNo) {
@@ -28,7 +28,7 @@ function setVolume(val) {
 $(document).ready(function(){
   canvasKenban(noteOnFunc, noteOffFunc);
   presetSelected = presetParams[presetNo];
-  lcd.init('canvasLCD', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo]);
+  lcd.init('canvasLCD', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo], true);
 
   // set presetParam
   /*
@@ -60,8 +60,8 @@ $(document).ready(function(){
       }
       if(lcd.systemReady==true) {
         presetSelected = presetParams[presetNo];
-        lcd.write2Display('init', 'SPACE');
-        lcd.write2Display('letters', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo] );
+        lcd.write2Display('init', 'SPACE', false);
+        lcd.write2Display('letters', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo], false );
       }
       event.stopImmediatePropagation();
     });
@@ -89,8 +89,8 @@ $(document).ready(function(){
       }
       if(lcd.systemReady==true) {
         presetSelected = presetParams[presetNo];
-        lcd.write2Display('init', 'SPACE');
-        lcd.write2Display('letters', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo] );
+        lcd.write2Display('init', 'SPACE', false);
+        lcd.write2Display('letters', 'Web Audio FM Synth' + ("0" + presetNo).slice(-2) + ':' + presetParams[presetNo], false);
       }
       event.stopImmediatePropagation();
     });

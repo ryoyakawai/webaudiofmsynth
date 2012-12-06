@@ -1,38 +1,57 @@
-/** 
- * @license canvasLCD.js 1.0.0 Copyright (c) 2012, Ryoya KAWAI All Rights Reserved.
- * Available via the MIT or new BSD license.
- */
+var CanvasLCD = function(lcdType) {
+  var colorSet = {
+    //'greenNoBLBlack'
+    '01' : {
+      'background' : '#b4be8a',
+      'on'         : '#000000',
+      'on2'        : '#696969',
+      'on3'        : '#808080',
+      'off'        : '#a8c39a'
+    },
+    //'greenNoBLPurple'
+    '02' : {
+      'background' : '#b4be8a',
+      'on'         : '#5658c1',
+      'on2'        : '#706ed7',
+      'on3'        : '#8381e3',
+      'off'        : '#a8c39a'
+    },
+    //'blueNoBLBlack'
+    '03' : {
+      'background' : '#719891',
+      'on'         : '#000000',
+      'on2'        : '#5b6d69',
+      'on3'        : '#576360',
+      'off'        : '#6da3a6'
+    },
+    //'yellowBLBlack'
+    '04' : {
+      'background' : '#00FF64',
+      'on'         : '#000000',
+      'on2'        : '#00BB55',
+      'on3'        : '#008855',
+      'off'        : '#00EE55'
+    },
+    //'blueBLGray'
+    '05' : {
+      'background' : '#5f2fff',
+      'on'         : '#c9cde5',
+      'on2'        : '#b7bbd5',
+      'on3'        : '#aeb3d2',
+      'off'        : '#5527ff'
+    },
+    //'orangeBLBlack'
+    '06' : {
+      'background' : '#ff7300',
+      'on'         : '#000000',
+      'on2'        : '#e16805',
+      'on3'        : '#703301',
+      'off'        : '#e86903'
+    }
 
-var CanvasLCD = function() {
-  var color = {
-    'background' : '#b4be8a',
-    'on'         : '#000000',
-    'on2'        : '#696969',
-    'on3'        : '#808080',
-    'off'        : '#a8c39a'
-/*
-    // w/o backlight #02
-    'background' : '#719891',
-    'on'         : '#000000',
-    'on2'        : '#5b6d69',
-    'on3'        : '#576360',
-    'off'        : '#6da3a6'
-*/
-/*     // w/o backlight #01
-    'background' : '#b4be8a',
-    'on'         : '#5658c1',
-    'on2'        : '#706ed7',
-    'on3'        : '#8381e3',
-    'off'        : '#a8c39a'
-*/
-/*    // backLight Yellow
-    'background' : '#00FF64',
-    'on'         : '#000000',
-    'on2'        : '#00BB55',
-    'on3'        : '#008855',
-    'off'        : '#00EE55'
-*/
-    };
+  };
+  var lcdType = lcdType;
+  var color = colorSet[lcdType];
   var digits = { 'x': 18, 'y': 2 };
   var magnif = 1.0; // magnification
   var offset = { 'top'  : 4, 'left' : 4, 'right' : 4 };
@@ -41,7 +60,11 @@ var CanvasLCD = function() {
   var intervalID = null;
   
   return {
-    init : function(canvasIdName, initialWord) {
+    init : function(canvasIdName, initialWord, logoDisp) {
+      if(typeof color =='undefined') {
+        console.log('Color Set [' + lcdType + '] does NOT exist.');
+        return;
+      }
       this.systemReady = false;
       this.canvas = document.getElementById(canvasIdName);
       this.canvasContext = this.canvas.getContext('2d'); 
@@ -55,7 +78,7 @@ var CanvasLCD = function() {
       this.canvasContext.fill();
       this.canvasContext.closePath();
       this.write2Display('init', 'SPACE');
-      this.HTML5Logo(initialWord);
+      if(logoDisp==true) this.HTML5Logo(initialWord);
     },
 
     HTML5Logo: function(initialWord) {
@@ -120,20 +143,15 @@ var CanvasLCD = function() {
         }, intervalSec);
     },
 
-    sleep : function( T ) {
-      var d1 = new Date().getTime();
-      var d2 = new Date().getTime();
-      while( d2 < d1+1000*T ){
-        d2=new Date().getTime();
-      }
-      return;
-    },
-
-    // mode: init, letter
+    // mode: init, letters
     write2Display : function(mode, letters) {
       if(typeof letters == 'number') letters=String(letters);
+      if(mode!='init' && mode!='logo' && (digits.x * digits.y) < letters.length) {
+        letters = letters.substring(0, digits.x * digits.y);
+      }
       switch(mode) {
       default:
+
        case 'init':
         if(letters =='SPACE') { var pattern = this.getPattern(letters); }
         for(var digX=0; digX<digits.x; digX++) {
@@ -141,7 +159,6 @@ var CanvasLCD = function() {
             this.letterOn(digX, digY, pattern);
           } // iteration of digY
         } // iteration of digX
-        
         break;
        case 'letters' :
         var digX = 0, digY = 0;
@@ -155,12 +172,61 @@ var CanvasLCD = function() {
           digX++;
         }
         break;
-        case 'logo':
+
+       case 'lettersRL01' :
+        var digX = 0, digY = 0;
+        var i = 0;
+        var that = this;
+        var itrL = setInterval(
+          function() {
+            var pattern = that.getPattern(letters.substring(i, i+1));
+            if(i>1 && i%digits.x==0) {
+              digY++;
+              digX = 0;
+            }
+            that.letterOn(digX, digY, pattern);
+            digX++;
+            i++;
+            if(letters.length < i) clearInterval(itrL);
+          }, 100);
+        break;
+
+       case 'lettersRL02' :
+        var digX = 0, digY = 0;
+        var i = 0;
+        var arrayLetters = new Array();
+        for(var j=0; j<digits.y; j++) {
+          arrayLetters.push(letters.substring(j*digits.x, (j+1)*digits.x));
+        }
+        var that = this;
+        var itrL = setInterval(
+          function() {
+            for(var j=0; j<digits.y; j++) {
+              var pattern=that.getPattern(arrayLetters[j].substring(i, i+1));
+              console.log(digX, j, arrayLetters[j].substring(i, i+1));
+              that.letterOn(digX, j, pattern);
+            }
+            digX++;
+            i++;
+            if(digits.x <= i) clearInterval(itrL);
+          }, 100);
+        break;
+
+       case 'logo':
         for(var i=0; i<letters.length; i++) {
           this.letterOn(letters[i].x, letters[i].y, this.getPattern(letters[i].pattern));
         }
         break;
       }
+    },
+
+    sleep : function( T ) {
+      var d1 = new Date().getTime();
+      var d2 = new Date().getTime();
+      while( d2 < d1+1000*T ){
+        d2=new Date().getTime();
+      }
+      return;
     },
 
     // digX: Offset Position of X, digY: Offset Position Y
