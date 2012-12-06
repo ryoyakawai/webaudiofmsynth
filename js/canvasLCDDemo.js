@@ -37,14 +37,6 @@ var CanvasLCD = function(lcdType) {
       'on3'        : '#008855',
       'off'        : '#00EE55'
     },
-    //'blueBLGray'
-    '05' : {
-      'background' : '#5f2fff',
-      'on'         : '#c9cde5',
-      'on2'        : '#b7bbd5',
-      'on3'        : '#aeb3d2',
-      'off'        : '#5527ff'
-    },
     //'orangeBLBlack'
     '06' : {
       'background' : '#ff7300',
@@ -52,6 +44,14 @@ var CanvasLCD = function(lcdType) {
       'on2'        : '#e16805',
       'on3'        : '#703301',
       'off'        : '#e86903'
+    },
+    //'blueBLGray'
+    '06' : {
+      'background' : '#5f2fff',
+      'on'         : '#c9cde5',
+      'on2'        : '#b7bbd5',
+      'on3'        : '#aeb3d2',
+      'off'        : '#5527ff'
     }
 
   };
