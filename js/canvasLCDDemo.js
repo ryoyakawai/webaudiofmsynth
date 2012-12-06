@@ -1,5 +1,5 @@
 /** 
- * @license canvasLCD.js 1.0 Copyright (c) 2012, Ryoya KAWAI All Rights Reserved.
+ * @license canvasLCDDemo.js 1.0 Copyright (c) 2012, Ryoya KAWAI All Rights Reserved.
  * Available via the MIT or new BSD license.
  */
 
@@ -119,17 +119,11 @@ var CanvasLCD = function(lcdType) {
         {'mode': 'logo', 'letters': HTML5Logo},
         {'mode': 'logo', 'letters': HTML5Logo},
         {'mode': 'init', 'letters': 'SPACE'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth   Version 0.1'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth   Version 0.1'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth   Version 0.1'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Loading.        |'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Loading..       -'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Loading....     |'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Loading......   -'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Loading........ |'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth Ready!'},
-        {'mode': 'letters', 'letters': 'Web Audio FM Synth'},
+        {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
+        {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
+        {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
+        {'mode': 'letters', 'letters': 'canvasLCD.js        Display Demo'},
+        {'mode': 'letters', 'letters': 'canvasLCD.js        Display Demo'},
         {'mode': 'letters', 'letters': initialWord }
       ];
       var intervalSec = 600;

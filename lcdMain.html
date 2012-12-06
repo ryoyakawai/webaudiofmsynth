@@ -1,0 +1,174 @@
+<html>
+<head>
+  <title>CanvasLCD</title>
+		<style type="text/css">
+		body{ background-image: url(images/backGround01.png); color: #dcdcdc; font-family: sans-serif;}
+		h1 { text-shadow: 1px 1px 3px #696969; margin: 10px; }
+		h3 { margin-left:10px; }
+		a:link {color: #cccccc;}
+		a:visited {color: #999999;}
+		a:active {color: #ffffff;}
+  .container{ width: 900px; margin: 20px 0px 0px 10px;}
+  .canvas{ margin: 0px 0px 0px 0px; border: solid 2px #696969; }
+  .lcdround{ border: solid 1px #000000;}
+		.display{ margin: 5px; border: solid 1px #808080; }
+		.flL{ float:left; }
+		.clear{ clear:both; }
+		.inputword{ margin: 10px 0px 0px 10px; font-size:140%;}
+		.changeword{ margin: 10px 0px 0px 10px; font-size:140%;}
+		.inputstatus { float:left; border-radius:24px; margin: -13px 5px 0px 20px; border: solid 1px #808080; width:48px; height:48px;}
+		.inputarea { margin: 30px; }
+		.inputarealabel { margin: 0px 0px 0px 10px; }
+		.description{ margin: 0px 0px 10px 0px ;}
+		.description02{ margin: -8px 0px 20px 20px; width: 800px; }
+		.prettyprint { background-color: #F7F7F9; border: 1px solid #E1E1E8; padding: 8px; width:600px; margin:0px 0px 0px 30px;}
+		.prettyprint.linenums { box-shadow: 40px 0 0 #FBFBFC inset, 41px 0 0 #ECECF0 inset; }
+		.displayType{margin: 5px 0px 0px 85px; font-size: 140%}
+		#social_button{ float:left; margin-left: 170px;}
+		#social_button > div{ float:left; min-width:70px;} 
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/prettify.css">
+</head>
+<body>
+		<h1><u>canvasLCD.js Smaple</u></h1>
+
+		<div id="social_button">
+    <div id="tw-root">
+						<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div id="gl-root">
+      <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+      <g:plusone size="medium"></g:plusone>
+    </div>
+    <div id="hb-root">
+      <a id="hb_like" href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加">
+        <img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" />
+      </a>
+      <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      <script type="text/javascript">document.getElementById("hb_like").href="http://b.hatena.ne.jp/entry/"+location.href</script>
+    </div>
+    <div id="fb-root1">
+      <iframe id="fb_like" src="" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowtransparency="true"></iframe>
+      <script type="text/javascript">document.getElementById("fb_like").src="http://www.facebook.com/plugins/like.php?href="+location.href+"&layout=button_count&show_faces=false&width=100&action=like&colorscheme=light&width=120"</script>
+    </div>
+    <div id="tw-root">
+						<a href="https://twitter.com/ryoyakawai" class="twitter-follow-button" data-show-count="false">Follow @ryoyakawai</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+		</div>
+		<br style="clear:both; margin: 20px;">
+
+
+  <div class="container">
+
+				<div class="description">
+						This is demo page of canvasLCS.js which is originally created for <a href="index.html" target="_blank">Web Audio FM Synth</a>.<br>
+						The source code is in <a href="https://github.com/ryoyakawai/webaudiofmsynth" target="_blank">GitHub</a>. 'canvasLCD.js' file is in 'js' directory.
+				</div>
+
+
+				<div class="display flL">
+						lcdType: 01
+						<div class="lcdround"><canvas id="canvasLCD00" class="canvas"></canvas></div>
+				</div>
+    <div class="display flL">
+						lcdType: 02
+						<div class="lcdround"><canvas id="canvasLCD01" class="canvas"></canvas></div>
+				</div>
+
+
+    <div class="display flL">
+						lcdType: 03
+						<div class="lcdround"><canvas id="canvasLCD02" class="canvas"></canvas></div>
+				</div>
+    <div class="display flL">
+						lcdType: 04
+						<div class="lcdround"><canvas id="canvasLCD03" class="canvas"></canvas></div>
+				</div>
+
+    <div class="display flL">
+						lcdType: 05
+						<div class="lcdround"><canvas id="canvasLCD05" class="canvas"></canvas></div>
+				</div>
+    <div class="display flL">
+						lcdType: 06
+						<div class="lcdround"><canvas id="canvasLCD04" class="canvas"></canvas></div>
+				</div>
+
+				<div class="clear" style="margin: 0px 0px 20px 0px;"></div>
+
+				<div class="inputarea">
+						<div class="inputarealabel">Input text here to fill all of the display.</div>
+						<div class="inputarealabel">Please wait for Green light.</div>
+						<div>
+								<select class="displayType">
+										<option value="letters">letters</option>
+										<option value="lettersRL01">lettersRL01</option>
+										<option value="lettersRL02">lettersRL02</option>
+								</select>
+						</div>
+						<div class="inputstatus"> </div>
+						<input type="text" class="inputword" size="50" maxlength="36" value="ThisIsSampleWords.Editable.TryOther!">
+
+						<input type="button" class="changeword" value="change" disabled="true">
+				</div>
+
+		<br>
+		<hr style="color:#c0c0c0;" size="1" noshade>
+		<h3><u>Useage</u></h3>
+		<div class="description02">
+(1) Put this line in HTML. (ex. index.html)
+<pre class="prettyprint">
+ &lt;canvas id="canvasLCD"&gt;&lt;/canvas&gt;
+</pre>
+<br>
+(2) Put this 2 lines in JavaScript (ex. main.js)
+<pre class="prettyprint">
+ var lcd = new CanvasLCD('01');
+ lcd.init('canvasLCD', 'initialword', true);
+</pre>
+<ul>
+		<li><b><u>Line1</u></b> The augument is the color type. There are 6 types(01, 02, 03, 04, 05, 06). Those samples are in above.</li>
+		<li><b><u>Line2</u></b> The 1st augument is the ID of canvas in HTML, 2nd one is the first words after the LOGO disappears, 3rd one is the flag of displaying LOGO or not.</li>
+</ul>
+(3) Write some word in display.
+<pre class="prettyprint">
+ lcd.write2Display('lettersRL01', 'ABCDEFG');
+</pre>
+<ul>
+		<li>The augument is the display type([letters] display letters at once [lettersRL01] display each letter from left to right. [lettersRL02] display each letter from left to right. If the display has multi line, letters are displays one iteration; Please try demo in above.), 3rd one is the letters which displays in the LCD.</li>
+</ul>
+(*) The display digits also can be changed.
+<pre class="prettyprint">
+var digits = { 'x': 18, 'y': 2 }; // Line55: canvasLCD.js
+</pre>
+<br>
+(*1) The display color also can be added. Add color set into colorSet object.
+
+		</div>
+  </div>
+
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/prettify.js"></script>
+		<script type="text/javascript" src="js/canvasLCDDemo.js"></script>
+		<script type="text/javascript" src="js/lcdMain.js"></script>
+		<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31901806-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+		</script>
+
+<a href="https://github.com/ryoyakawai/webaudiofmsynth" target="_new" class="header" style="position: absolute; z-index:2; top: 0; right: 0; border: 0;"><img src="images/forkme.png" alt="Fork me on GitHub"></a>
+
+</body>
+</html>
+
