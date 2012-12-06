@@ -38,7 +38,7 @@ var CanvasLCD = function(lcdType) {
       'off'        : '#00EE55'
     },
     //'orangeBLBlack'
-    '06' : {
+    '05' : {
       'background' : '#ff7300',
       'on'         : '#000000',
       'on2'        : '#e16805',
