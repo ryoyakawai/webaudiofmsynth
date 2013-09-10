@@ -12,7 +12,6 @@
 
 		<h1><u>Web Audio FM Synth</u></h1>
 
-
 		<div id="social_button">
 				<div style="margin:3px 10px 0px 25px;"><a href="lcdMain.html" target="_blank">LCD display Demo</a></div>
     <div id="tw-root">
@@ -41,6 +40,13 @@
 		</div>
 		<br style="clear:both; margin: 20px;">
 
+    <div style="margin-left: 20px;">
+			<div style="float:left;">
+        <select id="midiInput"></select><input type="button" id="midiInConnect" value="Connect">
+      </div>
+			<div class="connectionstatus" style="float:left;"></div>
+		</div>
+		<br>
 
 		<div class="container">
 				<div class="topPanel"></div>
@@ -65,7 +71,9 @@
 				<div class="canvasKenban center">
 						<canvas id="canvasKenban" width="650" height="122"></canvas>
 				</div>
+
   </div>
+
 
 		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="js/canvasKenban.js"></script>
@@ -75,6 +83,9 @@
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/fmsynth.js"></script>
 		<script type="text/javascript" src="js/webMidiLink.js"></script>
+  <script type="text/javascript" src="js/WebMIDIAPI.js"></script>
+  <script type="text/javascript" src="js/ctrlWebMIDIAPI.js"></script>
+
 		<script type="text/javascript">
 
   var _gaq = _gaq || [];

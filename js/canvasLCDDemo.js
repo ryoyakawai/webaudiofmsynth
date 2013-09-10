@@ -114,19 +114,14 @@ var CanvasLCD = function(lcdType) {
       var sequence = [
         {'mode': 'logo', 'letters': HTML5Logo},
         {'mode': 'logo', 'letters': HTML5Logo},
-        {'mode': 'logo', 'letters': HTML5Logo},
-        {'mode': 'logo', 'letters': HTML5Logo},
-        {'mode': 'logo', 'letters': HTML5Logo},
-        {'mode': 'logo', 'letters': HTML5Logo},
         {'mode': 'init', 'letters': 'SPACE'},
-        {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
         {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
         {'mode': 'letters', 'letters': 'canvasLCD.js         Version 1.0'},
         {'mode': 'letters', 'letters': 'canvasLCD.js        Display Demo'},
         {'mode': 'letters', 'letters': 'canvasLCD.js        Display Demo'},
         {'mode': 'letters', 'letters': initialWord }
       ];
-      var intervalSec = 600;
+      var intervalSec = 200;
       var seqCount = 0;
       var that = this;
       intervalID = setInterval(

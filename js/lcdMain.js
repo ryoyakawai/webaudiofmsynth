@@ -23,7 +23,7 @@ $(document).ready(function(){
         $("div.inputstatus").css('background-color', '#32cd32');
         clearInterval(ivlId);
       }
-    },300
+    },400
   );
   $('select.displayType').bind('change', function() {
     displayType=$('select.displayType option:selected').val();

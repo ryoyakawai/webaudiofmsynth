@@ -98,5 +98,6 @@ $(document).ready(function(){
     $(this).css('background-color', '#20B2AA');
     $('div.programRight').css('border-left-color', '#555');
   });
-  
+
 });
+  
