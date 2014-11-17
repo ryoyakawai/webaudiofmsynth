@@ -68,7 +68,7 @@ var FmSynth = function(ctx) {
         this.attIntervalSec = attIntervalSec;
         this.relIntervalSec = relIntervalSec;
 
-        this.mainGain = actx.createGainNode();
+        this.mainGain = actx.createGain();
         
         this.curlev = curlev; //new Array(0, 0, 0, 0);
         this.lev    = lev; //new Array(0.35, 0.70, 0.50, 0.50);
@@ -101,7 +101,7 @@ var FmSynth = function(ctx) {
       this.noteOnFlag = true;
 
       for(var i=0; i<this.numOsc; i++) {
-        this.gain[i] = actx.createGainNode();
+        this.gain[i] = actx.createGain();
         this.osc[i] = actx.createOscillator();
         this.analyser[i] = actx.createAnalyser();
         this.osc[i].type = this.oscType[i];

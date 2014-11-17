@@ -1,6 +1,6 @@
 var ctx = new webkitAudioContext();
 var poly = new Array(128);
-var mainGain = ctx.createGainNode();
+var mainGain = ctx.createGain();
 mainGain.connect( ctx.destination );
 mainGain.gain.value=0.8;
 var presetSelected = presetParams[0];
